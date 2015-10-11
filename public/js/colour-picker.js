@@ -54,8 +54,8 @@ function webGLStart() {
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.disable(gl.DEPTH_TEST);
-    this.gl.enable(this.gl.BLEND);
-    this.gl.blendFunc(this.gl.SRC_ALPHA, this.gl.ONE_MINUS_SRC_ALPHA);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
     drawColourSquare();
     drawTintPointer();
@@ -63,7 +63,7 @@ function webGLStart() {
 
 function initGL(canvas) {
 	try {
-		gl = canvas.getContext("webgl", { alpha: false } );
+        gl = canvas.getContext("webgl",{'alpha': false }) || canvas.getContext("experimental-webgl",{'alpha': false });
 		gl.viewportWidth = canvas.width;
 		gl.viewportHeight = canvas.height;
 	} catch(e) {
